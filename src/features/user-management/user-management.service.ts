@@ -10,9 +10,7 @@ export class UserManagementService {
 
   async getUsers() {
     try {
-      // console.log("AppDataSource.manager =", AppDataSource.manager);
       const users = await this.userRepository.find();
-      console.log("Users =", users);
       return await this.userRepository.find();
     } catch (err) {
       console.log("Error =", err);
