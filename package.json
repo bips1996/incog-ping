@@ -27,6 +27,7 @@
     "@types/jsonwebtoken": "^9.0.5",
     "@types/memory-cache": "^0.2.5",
     "@types/node": "^20.11.15",
+    "axios": "^1.6.7",
     "bcrypt": "^5.1.1",
     "body-parser": "^1.20.2",
     "concurrently": "^8.2.2",
@@ -35,9 +36,11 @@
     "jsonwebtoken": "^9.0.2",
     "memory-cache": "^0.2.0",
     "pg": "^8.11.3",
+    "speakeasy": "^2.0.0",
     "typeorm": "^0.3.20"
   },
   "devDependencies": {
+    "@types/speakeasy": "^2.0.10",
     "nodemon": "^3.0.3",
     "ts-node": "^10.9.2",
     "typescript": "^5.3.3"
