@@ -1,5 +1,5 @@
 import { GenericAppLevel } from "./generic_app_level.entity";
-import { Entity, Column, ManyToOne } from "typeorm";
+import { Entity, Column, ManyToOne, In, Index, JoinColumn } from "typeorm";
 import { User } from "./user.entity";
 import { DocumentType } from "./document_type.entity";
 
@@ -40,9 +40,16 @@ export class Document extends GenericAppLevel {
   @Column({ name: "object_key", nullable: true })
   objectKey: string;
 
+  @Index()
   @ManyToOne(() => User, (user) => user.id)
+  @JoinColumn({ name: "user_id", referencedColumnName: "id" })
   user: User;
 
+  @Index()
   @ManyToOne(() => DocumentType, (documentType) => documentType.id)
+  @JoinColumn({
+    name: "document_type_id",
+    referencedColumnName: "id",
+  })
   documentType: DocumentType;
 }
