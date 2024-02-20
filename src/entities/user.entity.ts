@@ -12,10 +12,16 @@ export enum Gender {
   Other = "other",
 }
 
+export enum UserStatus {
+  Active = "active",
+  Inactive = "inactive",
+  Deleted = "deleted",
+}
+
 @Entity({ name: "users" })
 export class User extends GenericAppLevel {
-  @Column()
-  name: string;
+  @Column({ name: "display_name" })
+  displayName: string;
 
   @Column()
   email: string;
@@ -23,8 +29,8 @@ export class User extends GenericAppLevel {
   @Column()
   password: string;
 
-  @Column()
-  phone: string;
+  @Column({ name: "phone_number" })
+  phoneNumber: string;
 
   @Column({
     name: "role",
@@ -37,12 +43,20 @@ export class User extends GenericAppLevel {
   @Column({ name: "gender", type: "enum", enum: Gender, default: Gender.Male })
   gender: string;
 
-  @Column({ name: "is_active", type: "boolean", default: true })
-  isActive: boolean;
+  @Column({
+    name: "status",
+    type: "enum",
+    enum: UserStatus,
+    default: UserStatus.Active,
+  })
+  status: UserStatus;
 
-  @Column({ name: "is_deleted", type: "boolean", default: false })
-  isDeleted: boolean;
+  @Column({ name: "uid", nullable: true })
+  uid: string;
 
-  @Column({ name: "display_picture_url", type: "text", nullable: true })
-  displayPictureUrl: string;
+  @Column({ name: "is_system_generated", default: false })
+  isSystemGenerated: boolean;
+
+  @Column({ name: "otp", nullable: true })
+  otp: string;
 }
